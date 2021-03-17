@@ -5,7 +5,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const popup = document.querySelector('.popup'),
         popupContent = popup.querySelector('.popup-content');
 
-    const deadline = '18 March 2021';
+    const deadline = '18 July 2021';
 
     // ***TIMER***
     const countTimer = (deadline) => {
