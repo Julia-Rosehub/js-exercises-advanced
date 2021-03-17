@@ -1,29 +1,37 @@
 'use strict';
 
-// *** Проверка на простое число ***
-const init = () => {
+let root = document.getElementById('root');
 
-    let n = 100;
+let week = ['вск', 'пнд', 'втр', 'срд', 'чтв', 'птн', 'сбт'];
+const first = week.splice(0, 1);
+const newWeek = week.push(first);
 
-    for (let i = 2; i <= n; i++) {
-        // устанавливаем флаг для простых чисел
-        let flag = 1;
-
-        let j;
-
-        if (i > 2) {
-            for (j = 2; j * j <= i; j++) {
-                if (i % j === 0) {
-                    flag = 0;
-                    break;
-                }
-            }
+const getToday = () => {
+    let today = '';
+    week.forEach((item, i) => {
+        if (i === new Date().getDay()) {
+            today = i - 1;
         }
-
-        if (flag === 1) {
-            console.log(`Делители числа ${i}: 1 и ${i}`);
-        }
-    }
+    });
+    return today;
 };
 
-init();
+const today = getToday();
+
+week.forEach((item, i) => {
+    let newItem = document.createElement('div');
+    newItem.textContent = item;
+
+    if (item === 'сбт' || item === 'вск') {
+        newItem.style.fontStyle = 'italic';
+    }
+    if (i == today) {
+        newItem.style.fontWeight = 'bold';
+    }
+
+    root.append(newItem);
+})
+
+
+
+
