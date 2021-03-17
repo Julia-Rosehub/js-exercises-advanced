@@ -1,13 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Урок 8</title>
-    <div id="root"></div>
-    <div id="timer"></div>
+    <title>Random Color</title>
+    <style>
+        #change {
+            display: block;
+            width: 150px;
+            height: 50px;
+            margin: auto;
+            margin-top: 5%;
+            /* убрать синюю обводку у кнопки */
+            outline: none;
+        }
+    </style>
 </head>
+
 <body>
-    <script src="index.js"></script>
+    <div class="wrapper">
+        <h1 id="color"></h1>
+        <button id="change" type="button"></button>
+    </div>
+    <script>
+        let h1 = document.getElementById('color');
+        let change = document.getElementById('change');
+        change.addEventListener('click', () => {
+            let newColor;
+            // сгенерировать случайное шестнадцатеричное число
+            newColor = '#' + (Math.random() * 0xFFFFFF << 0).toString(16);
+            change.textContent = newColor;
+            document.body.style.backgroundColor = newColor;
+        })
+    </script>
 </body>
+
 </html>
