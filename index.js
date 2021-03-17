@@ -1,41 +1,30 @@
 'use strict';
 
-let num = 266219;
+let lang = prompt('Введите значение переменной lang'),
+    namePerson,
+    promptResult = prompt('Введите имя');
 
-const makeArrayFromNumber = (num) => {
-    // объявляем переменную, куда будем записывать результат умножения всех чисел в массиве
-    let finalResult = 1;
+if (lang='ru') {
+    console.log('Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье');  
+} else if (lang='eng') {
+    console.log('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday');  
+} 
 
-    // преобразуем число в строку, а затем в массив
-    let arrayFromString = Array.from(num.toString());
+switch (lang) {
+    case 'ru':
+        console.log('Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье');  
+        break;    
+    case 'eng': 
+        console.log('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday');  
+}
 
-    // циклом проходим по всем элементам массива 
-    for (let j = 0; j < arrayFromString.length; j++) {
+let arr = {
+    'ru': ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'],
+    'eng': ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+}
 
-        // результат записываем в переменую finalResult,используем оператор присваивания с умножением       
-        finalResult *= arrayFromString[j];
-    };
+console.log(arr[lang]);
 
-    console.log('Результат произведения цифр числа 266219', finalResult);
-
-    return finalResult;
-};
-
-const powFunction = (a, n) => {
-    let resultPowFunction = 1;
-
-    for (let i = 0; i < n; i++) {
-        resultPowFunction *= a;
-    }
-    console.log('Результат возведения в степень полученного выше числа', resultPowFunction);
-
-    return resultPowFunction;
-};
-
-// результат функции возведения в степень
-const finalResult = makeArrayFromNumber(num);
-
-const resultPowFunction = powFunction(finalResult, 3);
-
-// преобразуем результат в строку
-console.log(`Первые 2 цифры числа ${resultPowFunction}`, resultPowFunction.toString().slice(0, 2));
+namePerson = (promptResult === 'Артем') ? console.log("Директор") : 
+        (promptResult === "Максим") ? console.log("Преподаватель") : 
+        console.log("Студент");
