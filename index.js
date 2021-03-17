@@ -1,21 +1,29 @@
 'use strict';
 
-let arg = 'Javascript - это динамический, слабо типизированный язык';
+// *** Проверка на простое число ***
+const init = () => {
 
-const callbackFunc = argument => {
-    console.log(argument.slice(0, 30) + '...');
-};
+    let n = 100;
 
-const init = (arg, callback) => {
-    if (typeof (arg) !== 'string') {
-        alert('Переданный аргумент не является строкой');
-        return;
+    for (let i = 2; i <= n; i++) {
+        // устанавливаем флаг для простых чисел
+        let flag = 1;
+
+        let j;
+
+        if (i > 2) {
+            for (j = 2; j * j <= i; j++) {
+                if (i % j === 0) {
+                    flag = 0;
+                    break;
+                }
+            }
+        }
+
+        if (flag === 1) {
+            console.log(`Делители числа ${i}: 1 и ${i}`);
+        }
     }
-    let argTrim = arg.trim();
-    if (argTrim.length > 30) {
-        callback(argTrim);
-    };
 };
 
-// Вызываем функцию, вместо arg передаем значение, например 5 или 'Javascript - это динамический, слабо типизированный язык.';
-init(arg, callbackFunc);
+init();
