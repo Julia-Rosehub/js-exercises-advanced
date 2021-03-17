@@ -1,30 +1,21 @@
 'use strict';
 
-let lang = prompt('Введите значение переменной lang'),
-    namePerson,
-    promptResult = prompt('Введите имя');
+let arg = 'Javascript - это динамический, слабо типизированный язык';
 
-if (lang='ru') {
-    console.log('Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье');  
-} else if (lang='eng') {
-    console.log('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday');  
-} 
+const callbackFunc = argument => {
+    console.log(argument.slice(0, 30) + '...');
+};
 
-switch (lang) {
-    case 'ru':
-        console.log('Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье');  
-        break;    
-    case 'eng': 
-        console.log('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday');  
-}
+const init = (arg, callback) => {
+    if (typeof (arg) !== 'string') {
+        alert('Переданный аргумент не является строкой');
+        return;
+    }
+    let argTrim = arg.trim();
+    if (argTrim.length > 30) {
+        callback(argTrim);
+    };
+};
 
-let arr = {
-    'ru': ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'],
-    'eng': ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
-}
-
-console.log(arr[lang]);
-
-namePerson = (promptResult === 'Артем') ? console.log("Директор") : 
-        (promptResult === "Максим") ? console.log("Преподаватель") : 
-        console.log("Студент");
+// Вызываем функцию, вместо arg передаем значение, например 5 или 'Javascript - это динамический, слабо типизированный язык.';
+init(arg, callbackFunc);
